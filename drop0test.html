@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影片逐幀數字識別</title>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        #videoPreview, #canvasOutput {
+            max-width: 100%;
+            display: block;
+            margin: 10px auto;
+            border: 1px solid #ddd;
+        }
+        #result {
+            margin-top: 20px;
+            text-align: left;
+            white-space: pre-wrap;
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #4285f4;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 5px;
+        }
+        button:disabled {
+            background: #ccc;
+        }
+        .progress-bar {
+            width: 100%;
+            background: #e0e0e0;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .progress {
+            height: 10px;
+            background: #4285f4;
+            border-radius: 5px;
+            width: 0%;
+        }
+    </style>
+</head>
+<body>
+    <h1>影片逐幀數字識別</h1>
+    <p>上傳影片，自動分析每一幀的數字</p>
+    
+    <input type="file" id="videoInput" accept="video/*" />
+    <br>
+    <button id="startBtn" disabled>開始分析</button>
+    <button id="stopBtn" disabled>停止</button>
+    
+    <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+    </div>
+    
+    <div>
+        <h3>影片預覽：</h3>
+        <video id="videoPreview" controls></video>
+        <canvas id="canvasOutput"></canvas>
+    </div>
+    
+    <div>
+        <h3>識別結果：</h3>
+        <pre id="result"></pre>
+    </div>
+
+    <script>
+        const videoInput = document.getElementById('videoInput');
+        const videoPreview = document.getElementById('videoPreview');
+        const canvasOutput = document.getElementById('canvasOutput');
+        const ctx = canvasOutput.getContext('2d');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const result = document.getElementById('result');
+        const progressBar = document.getElementById('progressBar');
+
+        let isProcessing = false;
+        let frameCount = 0;
+        let totalFrames = 0;
+
+        // 載入影片並啟用開始按鈕
+        videoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            videoPreview.src = URL.createObjectURL(file);
+            startBtn.disabled = false;
+        });
+
+        // 開始逐幀分析
+        startBtn.addEventListener('click', async function() {
+            const video = videoPreview;
+            if (!video.src) return;
+
+            isProcessing = true;
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            result.textContent = "開始分析...\n";
+            frameCount = 0;
+
+            // 計算影片總幀數（簡化：假設 30 FPS）
+            totalFrames = Math.floor(video.duration * 30);
+
+            // 設定 Canvas 尺寸
+            canvasOutput.width = video.videoWidth;
+            canvasOutput.height = video.videoHeight;
+
+            // 逐幀處理
+            video.currentTime = 0;
+            video.addEventListener('seeked', processFrame);
+
+            // 手動觸發第一幀
+            video.currentTime = 0;
+        });
+
+        // 停止分析
+        stopBtn.addEventListener('click', function() {
+            isProcessing = false;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            result.textContent += "\n已停止分析";
+        });
+
+        // 處理單一幀
+
+    async function processFrame() {
+        if (!isProcessing) return;
+
+        const video = videoPreview;
+        ctx.drawImage(video, 0, 0, canvasOutput.width, canvasOutput.height);
+        
+        try {
+            const { data: { text } } = await Tesseract.recognize(
+                canvasOutput,
+                'eng',
+                { logger: m => console.log(m) }
+            );
+
+            // 重點修改：只抓取 "SPEED:" 後的數字
+            const speedMatch = text.match(/SPEED:\s*([\d.]+)/i);
+            if (speedMatch) {
+                const speedValue = speedMatch[1];
+                result.textContent += `[${formatTime(video.currentTime)}] SPEED: ${speedValue}\n`;
+            }
+        } catch (error) {
+            console.error("OCR 錯誤:", error);
+        }
+
+        // 更新進度條
+        frameCount++;
+        const progress = (frameCount / totalFrames) * 100;
+        progressBar.style.width = `${progress}%`;
+
+        // 繼續下一幀（每 0.5 秒取一幀）
+        if (video.currentTime < video.duration && isProcessing) {
+            video.currentTime += 0.5;
+        } else {
+            isProcessing = false;
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            result.textContent += "\n分析完成！";
+        }
+    }
+
+
+        // 格式化時間 (00:00.000)
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            const ms = Math.floor((seconds % 1) * 1000);
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}.${ms.toString().padStart(3, '0')}`;
+        }
+    </script>
+</body>
+</html>
