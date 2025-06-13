@@ -1,1 +1,190 @@
-<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'><title>我的网页 - HTMLPAGE</title><meta name="description" content="在线可视化网页构建器，HTMLPAGE"><meta name="keywords" content="HTMLPAGE"></head><body><div><style>* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Jhenghei", sans-serif;}.panel{color:rgb(51, 51, 51);font-weight:100;}.logo path{pointer-events:none;fill:none;stroke-linecap:round;stroke-width:7;stroke:rgb(255, 255, 255);}.description{text-align:center;font-size:1em;font-weight:500;line-height:1.8rem;margin-bottom:1rem;}.wechat-group{text-align:center;padding-bottom:10px;}.wechat-group img{max-width:220px;height:auto;border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;margin-top:0px;margin-right:auto;margin-bottom:0px;margin-left:auto;width:100%;}.welcome-img img{width:100%;}.bg-gradient-primary{border-top-left-radius:8px;border-top-right-radius:8px;border-bottom-right-radius:8px;border-bottom-left-radius:8px;}</style><div id="default-editor-page__placeholder" class="panel"><link rel="stylesheet" href="css/plugins.css"/><link rel="stylesheet" href="css/style.css"/><section class="wrapper bg-gradient-primary"><div class="container py-18 pt-md-14 pb-md-14"><div class="row text-center"><div class="col-lg-9 col-xxl-7 mx-auto"><h2 class="display-1 mb-4">示例页面，免费在线网页制作工具</h2><p class="lead fs-24 lh-sm px-md-5 px-xl-15 px-xxl-10 mb-7">兼顾设计师和开发者，所见即所得，无需代码经验轻松上手</p></div><!-- /column --></div><!-- /.row --><div class="d-flex justify-content-center"><span><a href="https://htmlpage.cn/builder/" class="btn btn-lg btn-primary rounded-pill mx-1">马上使用</a></span><span><a href="https://htmlpage.cn/contact" class="btn btn-lg btn-outline-primary rounded-pill mx-1">联系我们</a></span></div><!-- /div --><div class="row mt-10"><div class="col-lg-8 mx-auto"><figure><img src="img/i12.png" alt="" class="img-fluid"/></figure></div><!-- /column --></div><!-- /.row --></div><!-- /.container --></section><section class="wrapper bg-gradient-primary"><div class="container pt-14 pb-8"><div class="row text-center"><div class="col-lg-9 col-xxl-7 mx-auto"><h2 class="display-1 mb-4">扫描二维码加入交流群</h2><p class="lead fs-24 lh-sm px-md-5 px-xl-15 px-xxl-10 mb-7">使用过程中遇到问题，可以在群里求助</p></div><!-- /column --></div></div></section><div class="wechat-group pb-12"><img src="img/wechat-group-3.jpeg"/></div><div class="description">© 2023 Lapus. 版权所有</div></div></div></body></html>
+<body>
+  <div id="default-editor-page__placeholder" class="panel">
+    <link rel="stylesheet" href="https://coscdn.htmlpage.cn/vip-tpl/assets/css/plugins.css"/>
+    <link rel="stylesheet" href="https://coscdn.htmlpage.cn/vip-tpl/assets/css/style.css"/>
+    <section class="wrapper bg-gradient-primary">
+      <div class="container py-18 pt-md-14 pb-md-14">
+        <div class="row text-center">
+          <div class="col-lg-9 col-xxl-7 mx-auto">
+            <h2 class="display-1 mb-4">示例页面，免费在线网页制作工具
+            </h2>
+            <p class="lead fs-24 lh-sm px-md-5 px-xl-15 px-xxl-10 mb-7">兼顾设计师和开发者，所见即所得，无需代码经验轻松上手
+            </p>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+        <div class="d-flex justify-content-center">
+          <span><a href="https://htmlpage.cn/builder/" class="btn btn-lg btn-primary rounded-pill mx-1">马上使用</a></span>
+          <span><a href="https://htmlpage.cn/contact" class="btn btn-lg btn-outline-primary rounded-pill mx-1">联系我们</a></span>
+        </div>
+        <!-- /div -->
+        <div>
+          <meta charset="UTF-8"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <title>影片逐幀數字識別
+          </title>
+          <h1>影片逐幀數字識別
+          </h1>
+          <p>上傳影片，自動分析每一幀的數字
+          </p>
+          <input type="file" id="videoInput" accept="video/*"/>
+          <br/>
+          <button id="startBtn" disabled>開始分析</button>
+          <button id="stopBtn" disabled>停止</button>
+          <div class="progress-bar">
+            <div id="progressBar" class="progress">
+            </div>
+          </div>
+          <div>
+            <h3>影片預覽：
+            </h3>
+            <video allowfullscreen="allowfullscreen" id="videoPreview" controls="controls" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3R5bGU9ImZpbGw6IHJnYmEoMCwwLDAsMC4xNSk7IHRyYW5zZm9ybTogc2NhbGUoMC43NSkiPgogICAgICAgIDxwYXRoIGQ9Ik04LjUgMTMuNWwyLjUgMyAzLjUtNC41IDQuNSA2SDVtMTYgMVY1YTIgMiAwIDAgMC0yLTJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMnoiPjwvcGF0aD4KICAgICAgPC9zdmc+">
+            </video>
+            <canvas id="canvasOutput">
+            </canvas>
+          </div>
+          <div>
+            <h3>識別結果：
+            </h3>
+            <pre id="result">
+</pre>
+          </div>
+          <script>
+            const videoInput = document.getElementById('videoInput');
+            const videoPreview = document.getElementById('videoPreview');
+            const canvasOutput = document.getElementById('canvasOutput');
+            const ctx = canvasOutput.getContext('2d');
+            const startBtn = document.getElementById('startBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const result = document.getElementById('result');
+            const progressBar = document.getElementById('progressBar');
+            let isProcessing = false;
+            let frameCount = 0;
+            let totalFrames = 0;
+            // 載入影片並啟用開始按鈕
+            videoInput.addEventListener('change', function(e) {
+              const file = e.target.files[0];
+              if (!file) return;
+              videoPreview.src = URL.createObjectURL(file);
+              startBtn.disabled = false;
+            }
+                                       );
+            // 開始逐幀分析
+            startBtn.addEventListener('click', async function() {
+              const video = videoPreview;
+              if (!video.src) return;
+              isProcessing = true;
+              startBtn.disabled = true;
+              stopBtn.disabled = false;
+              result.textContent = "開始分析...\n";
+              frameCount = 0;
+              // 計算影片總幀數（簡化：假設 30 FPS）
+              totalFrames = Math.floor(video.duration * 30);
+              // 設定 Canvas 尺寸
+              canvasOutput.width = video.videoWidth;
+              canvasOutput.height = video.videoHeight;
+              // 逐幀處理
+              video.currentTime = 0;
+              video.addEventListener('seeked', processFrame);
+              // 手動觸發第一幀
+              video.currentTime = 0;
+            }
+                                     );
+            // 停止分析
+            stopBtn.addEventListener('click', function() {
+              isProcessing = false;
+              startBtn.disabled = false;
+              stopBtn.disabled = true;
+              result.textContent += "\n已停止分析";
+            }
+                                    );
+            // 處理單一幀
+            async function processFrame() {
+              if (!isProcessing) return;
+              const video = videoPreview;
+              ctx.drawImage(video, 0, 0, canvasOutput.width, canvasOutput.height);
+              try {
+                const {
+                  data: {
+                    text }
+                }
+                = await Tesseract.recognize(
+                  canvasOutput,
+                  'eng',
+                  {
+                    logger: m => console.log(m) }
+                );
+                // 重點修改：只抓取 "SPEED:" 後的數字
+                const speedMatch = text.match(/SPEED:\s*([\d.]+)/i);
+                if (speedMatch) {
+                  const speedValue = speedMatch[1];
+                  result.textContent += `[${formatTime(video.currentTime)}
+] SPEED: ${speedValue}
+\n`;
+                }
+              }
+              catch (error) {
+                console.error("OCR 錯誤:", error);
+              }
+              // 更新進度條
+              frameCount++;
+              const progress = (frameCount / totalFrames) * 100;
+              progressBar.style.width = `${progress}
+%`;
+              // 繼續下一幀（每 0.5 秒取一幀）
+              if (video.currentTime < video.duration && isProcessing) {
+                video.currentTime += 0.5;
+              }
+              else {
+                isProcessing = false;
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+                result.textContent += "\n分析完成！";
+              }
+            }
+            // 格式化時間 (00:00.000)
+            function formatTime(seconds) {
+              const mins = Math.floor(seconds / 60);
+              const secs = Math.floor(seconds % 60);
+              const ms = Math.floor((seconds % 1) * 1000);
+              return `${mins.toString().padStart(2, '0')}
+:${secs.toString().padStart(2, '0')}
+.${ms.toString().padStart(3, '0')}
+`;
+            }
+          </script>
+          <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+        </div>
+        <div class="row mt-10">
+          <div class="col-lg-8 mx-auto">
+            <figure>
+              <img src="https://coscdn.htmlpage.cn/sandbox/assets/img/illustrations/i12.png" alt="" class="img-fluid"/>
+            </figure>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container -->
+    </section>
+    <section class="wrapper bg-gradient-primary">
+      <div class="container pt-14 pb-8">
+        <div class="row text-center">
+          <div class="col-lg-9 col-xxl-7 mx-auto">
+            <h2 class="display-1 mb-4">扫描二维码加入交流群
+            </h2>
+            <p class="lead fs-24 lh-sm px-md-5 px-xl-15 px-xxl-10 mb-7">使用过程中遇到问题，可以在群里求助
+            </p>
+          </div>
+          <!-- /column -->
+        </div>
+      </div>
+    </section>
+    <div class="wechat-group pb-12">
+      <img src="https://coscdn.htmlpage.cn/wechat/wechat-group-3.jpeg"/>
+    </div>
+    <div class="description">© 2023 Lapus. 版权所有
+    </div>
+  </div>
+</body>
